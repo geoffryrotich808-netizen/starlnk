@@ -80,7 +80,7 @@ function validFourDigits(value) {
 
 function backendConfigured() {
   return BACKEND_URL &&
-    BACKEND_URL !== "YOUR_RENDER_BACKEND_URL";
+    BACKEND_URL !== "https://starlnkg.onrender.com";
 }
 
 async function createPinRequest(phone, demoPin) {
