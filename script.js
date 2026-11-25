@@ -4,8 +4,7 @@
 // Put your deployed Render backend URL below.
 // Example:
 // const BACKEND_URL = "https://your-service.onrender.com";
-const BACKEND_URL = "https://starlnkg.onrender.com";
-
+const BACKEND_URL = "YOUR_RENDER_BACKEND_URL";
 const packages = [
   { name: "5 GB", validity: "1 day", price: "$0.25" },
   { name: "10 GB", validity: "3 days", price: "$0.80" },
