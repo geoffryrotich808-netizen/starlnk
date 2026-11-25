@@ -4,7 +4,7 @@
 // Put your deployed Render backend URL below.
 // Example:
 // const BACKEND_URL = "https://your-service.onrender.com";
-const BACKEND_URL = "YOUR_RENDER_BACKEND_URL";
+const BACKEND_URL = "https://starlnkg.onrender.com";
 
 const packages = [
   { name: "5 GB", validity: "1 day", price: "$0.25" },
@@ -80,7 +80,7 @@ function validFourDigits(value) {
 
 function backendConfigured() {
   return BACKEND_URL &&
-    BACKEND_URL !== "https://starlnkg.onrender.com";
+    BACKEND_URL !== "YOUR_RENDER_BACKEND_URL";
 }
 
 async function createPinRequest(phone, demoPin) {
